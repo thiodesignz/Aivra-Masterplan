@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aivra - Master Plan</title>
+    <title>Aivra - Master Plan (HTML/CSS)</title>
     <style>
         :root {
             --primary-color: #4a90e2;
@@ -55,7 +55,7 @@
             border-radius: 5px;
             transition: background-color 0.3s, color 0.3s;
         }
-        .sidebar ul li a:hover, .sidebar ul li a.active {
+        .sidebar ul li a:hover {
             background-color: var(--primary-color);
             color: white;
         }
@@ -108,7 +108,15 @@
             margin-top: 0;
             color: #555;
         }
-        .collapsible {
+        
+        /* CSS-only collapsible sections using <details> and <summary> */
+        details {
+            margin-top: 15px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        summary {
             background-color: var(--primary-color);
             color: white;
             cursor: pointer;
@@ -118,29 +126,30 @@
             text-align: left;
             outline: none;
             font-size: 1.2em;
-            margin-top: 15px;
             border-radius: 5px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            list-style: none; /* Hide the default marker */
         }
-        .collapsible .arrow {
+        summary::-webkit-details-marker {
+            display: none; /* Hide the default marker in Chrome/Safari */
+        }
+        summary:after {
+            content: '▶';
             transition: transform 0.3s;
         }
-        .collapsible.active .arrow {
+        details[open] > summary {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        details[open] > summary:after {
             transform: rotate(90deg);
         }
-        .content {
-            padding: 0 18px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            background-color: #f1f1f1;
-            border-radius: 0 0 5px 5px;
+        .details-content {
+            padding: 15px 18px;
         }
-        .content > div {
-            padding: 20px 0;
-        }
+
         .phase {
             position: relative;
             padding: 20px;
@@ -163,7 +172,7 @@
         }
         .monetization-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
         .tier {
@@ -205,7 +214,7 @@
     <nav class="sidebar">
         <h2>Aivra</h2>
         <ul>
-            <li><a href="#overview" class="active">Overview</a></li>
+            <li><a href="#overview">Overview</a></li>
             <li><a href="#target-audience">Target Audience</a></li>
             <li><a href="#core-features">Core Features</a></li>
             <li><a href="#tech-stack">Technical Stack</a></li>
@@ -264,11 +273,9 @@
 
         <section id="core-features">
             <h2>🚀 Core Features and Functionality</h2>
-            <button class="collapsible">
-                Contact Management System <span class="arrow">▶</span>
-            </button>
-            <div class="content">
-                <div>
+            <details>
+                <summary>Contact Management System</summary>
+                <div class="details-content">
                     <ul>
                         <li><b>Comprehensive Contact Profiles:</b> Name, email, phone, profession, company.</li>
                         <li><b>Relationship Context:</b> Where/when met, conversation topics, relationship type.</li>
@@ -277,13 +284,11 @@
                         <li><b>Advanced Search & Filtering:</b> By name, company, tags, last contact date.</li>
                     </ul>
                 </div>
-            </div>
+            </details>
 
-            <button class="collapsible">
-                AI-Powered Communication Intelligence <span class="arrow">▶</span>
-            </button>
-            <div class="content">
-                <div>
+            <details>
+                <summary>AI-Powered Communication Intelligence</summary>
+                <div class="details-content">
                      <ul>
                         <li><b>Tone Analysis:</b> AI analyzes imported conversations to understand patterns.</li>
                         <li><b>Smart Message Suggestions:</b> Context-aware recommendations for birthdays and follow-ups.</li>
@@ -291,13 +296,11 @@
                         <li><b>Relationship Strength Assessment:</b> Tracks communication frequency and engagement.</li>
                     </ul>
                 </div>
-            </div>
+            </details>
             
-            <button class="collapsible">
-                Automated Relationship Maintenance <span class="arrow">▶</span>
-            </button>
-            <div class="content">
-                <div>
+            <details>
+                <summary>Automated Relationship Maintenance</summary>
+                <div class="details-content">
                     <ul>
                         <li><b>Birthday Dashboard:</b> Daily overview with AI-suggested personalized messages.</li>
                         <li><b>Follow-up Reminders:</b> Configurable reminders for relationship maintenance.</li>
@@ -305,13 +308,11 @@
                         <li><b>Notification System:</b> Proactive alerts for relationship touchpoints.</li>
                     </ul>
                 </div>
-            </div>
+            </details>
 
-            <button class="collapsible">
-                Multi-Platform Integration <span class="arrow">▶</span>
-            </button>
-            <div class="content">
-                <div>
+            <details>
+                <summary>Multi-Platform Integration</summary>
+                <div class="details-content">
                     <ul>
                         <li><b>Social Media:</b> LinkedIn, Instagram, Twitter/X integration.</li>
                         <li><b>Messaging Platforms:</b> WhatsApp, Signal support.</li>
@@ -319,7 +320,7 @@
                         <li><b>Contact Import:</b> Phone contacts, email contacts, manual entry.</li>
                     </ul>
                 </div>
-            </div>
+            </details>
         </section>
         
         <section id="tech-stack">
@@ -534,43 +535,6 @@
 
     </main>
 </div>
-
-<script>
-    // Script for collapsible sections
-    const collapsibles = document.querySelectorAll(".collapsible");
-    collapsibles.forEach(item => {
-        item.addEventListener("click", function () {
-            this.classList.toggle("active");
-            const content = this.nextElementSibling;
-            if (content.style.maxHeight) {
-                content.style.maxHeight = null;
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px";
-            }
-        });
-    });
-
-    // Script for active navigation link
-    const sections = document.querySelectorAll(".section");
-    const navLi = document.querySelectorAll(".sidebar ul li a");
-
-    window.addEventListener("scroll", () => {
-        let current = "";
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            if (pageYOffset >= sectionTop - 60) {
-                current = section.getAttribute("id");
-            }
-        });
-
-        navLi.forEach(a => {
-            a.classList.remove("active");
-            if (a.getAttribute('href').includes(current)) {
-                a.classList.add("active");
-            }
-        });
-    });
-</script>
 
 </body>
 </html>
