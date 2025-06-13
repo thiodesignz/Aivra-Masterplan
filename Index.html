@@ -3,538 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aivra - Master Plan (HTML/CSS)</title>
-    <style>
-        :root {
-            --primary-color: #4a90e2;
-            --secondary-color: #f5a623;
-            --background-color: #f8f9fa;
-            --text-color: #333;
-            --card-bg: #ffffff;
-            --shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-        .container {
-            display: flex;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        .sidebar {
-            width: 250px;
-            background-color: var(--card-bg);
-            padding: 20px;
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            overflow-y: auto;
-            border-right: 1px solid #e0e0e0;
-        }
-        .sidebar h2 {
-            color: var(--primary-color);
-            font-size: 1.5em;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .sidebar ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .sidebar ul li a {
-            display: block;
-            color: var(--text-color);
-            text-decoration: none;
-            padding: 10px 15px;
-            margin-bottom: 5px;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .sidebar ul li a:hover {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        .main-content {
-            flex-grow: 1;
-            padding: 40px;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        header h1 {
-            font-size: 3em;
-            color: var(--primary-color);
-            margin: 0;
-        }
-        header p {
-            font-size: 1.2em;
-            color: #666;
-            max-width: 800px;
-            margin: 10px auto 0;
-        }
-        .section {
-            background-color: var(--card-bg);
-            margin-bottom: 30px;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            scroll-margin-top: 20px;
-        }
-        .section h2 {
-            font-size: 2em;
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 10px;
-            margin-top: 0;
-        }
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        .card {
-            background: #fdfdfd;
-            border: 1px solid #eee;
-            padding: 20px;
-            border-radius: 8px;
-        }
-        .card h3 {
-            margin-top: 0;
-            color: #555;
-        }
-        
-        /* CSS-only collapsible sections using <details> and <summary> */
-        details {
-            margin-top: 15px;
-            background-color: #f1f1f1;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-        }
-        summary {
-            background-color: var(--primary-color);
-            color: white;
-            cursor: pointer;
-            padding: 18px;
-            width: 100%;
-            border: none;
-            text-align: left;
-            outline: none;
-            font-size: 1.2em;
-            border-radius: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            list-style: none; /* Hide the default marker */
-        }
-        summary::-webkit-details-marker {
-            display: none; /* Hide the default marker in Chrome/Safari */
-        }
-        summary:after {
-            content: '▶';
-            transition: transform 0.3s;
-        }
-        details[open] > summary {
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-        }
-        details[open] > summary:after {
-            transform: rotate(90deg);
-        }
-        .details-content {
-            padding: 15px 18px;
-        }
-
-        .phase {
-            position: relative;
-            padding: 20px;
-            margin-left: 20px;
-            border-left: 3px solid var(--primary-color);
-        }
-        .phase h3 {
-            color: var(--primary-color);
-            margin-top: 0;
-        }
-        .phase-dot {
-            position: absolute;
-            left: -11.5px;
-            top: 20px;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--primary-color);
-            border: 3px solid var(--background-color);
-        }
-        .monetization-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .tier {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .tier:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-        }
-        .tier h3 {
-            color: var(--primary-color);
-        }
-        .tier .price {
-            font-size: 1.8em;
-            font-weight: bold;
-            margin: 10px 0;
-        }
-        .tier ul {
-            list-style-type: none;
-            padding: 0;
-            text-align: left;
-        }
-        .tier ul li {
-            margin-bottom: 10px;
-        }
-        .pro-tier {
-            border-color: var(--primary-color);
-            border-width: 2px;
-        }
-    </style>
+    <title>Aivra - Master Plan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      function toggle(id) {
+        document.getElementById(id).classList.toggle('hidden');
+      }
+    </script>
 </head>
-<body>
-
-<div class="container">
-    <nav class="sidebar">
-        <h2>Aivra</h2>
-        <ul>
-            <li><a href="#overview">Overview</a></li>
-            <li><a href="#target-audience">Target Audience</a></li>
-            <li><a href="#core-features">Core Features</a></li>
-            <li><a href="#tech-stack">Technical Stack</a></li>
-            <li><a href="#data-model">Data Model</a></li>
-            <li><a href="#ui-design">UI Design</a></li>
-            <li><a href="#security">Security</a></li>
-            <li><a href="#development-phases">Development Phases</a></li>
-            <li><a href="#monetization">Monetization</a></li>
-            <li><a href="#challenges">Challenges</a></li>
-            <li><a href="#future-expansion">Future Expansion</a></li>
-            <li><a href="#kpis">Success Metrics</a></li>
-            <li><a href="#conclusion">Conclusion</a></li>
-        </ul>
-    </nav>
-
-    <main class="main-content">
-        <header>
-            <h1>Aivra - Master Plan</h1>
-            <p>AI-Powered Personal Relationship Management for Solopreneurs & Networkers</p>
-        </header>
-
-        <section id="overview">
-            <h2>📝 App Overview and Objectives</h2>
-            <p>Aivra is a SaaS platform designed to help solopreneurs, freelancers, and networking professionals maintain meaningful relationships with their extensive network of contacts. The platform solves the common problem of forgetting important details about connections, losing track of communication history, and struggling to maintain authentic relationship touchpoints over time.</p>
-            <div class="card" style="border-left: 5px solid var(--secondary-color);">
-                <h3>Core Value Proposition</h3>
-                <p>Aivra uses AI to analyze communication patterns and suggest personalized messages that maintain relationship authenticity, ensuring users never miss important moments like birthdays or follow-up opportunities.</p>
-            </div>
-        </section>
-
-        <section id="target-audience">
-            <h2>🎯 Target Audience</h2>
-            <div class="grid-container">
-                <div class="card">
-                    <h3>Primary Users</h3>
-                    <ul>
-                        <li>Freelancers and consultants</li>
-                        <li>Sales professionals and business developers</li>
-                        <li>Content creators and influencers</li>
-                        <li>Real estate agents, insurance brokers</li>
-                        <li>General entrepreneurs</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>User Characteristics</h3>
-                    <ul>
-                        <li>Manage 100+ professional contacts</li>
-                        <li>Active on multiple communication platforms</li>
-                        <li>Value authentic relationship building</li>
-                        <li>Need efficient systems to scale connection</li>
-                        <li>Moderately to highly tech-savvy</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="core-features">
-            <h2>🚀 Core Features and Functionality</h2>
-            <details>
-                <summary>Contact Management System</summary>
-                <div class="details-content">
-                    <ul>
-                        <li><b>Comprehensive Contact Profiles:</b> Name, email, phone, profession, company.</li>
-                        <li><b>Relationship Context:</b> Where/when met, conversation topics, relationship type.</li>
-                        <li><b>Personal Details:</b> Birthdays, interests, personal notes.</li>
-                        <li><b>Categorization & Tagging:</b> Flexible organization (clients, prospects, friends).</li>
-                        <li><b>Advanced Search & Filtering:</b> By name, company, tags, last contact date.</li>
-                    </ul>
-                </div>
-            </details>
-
-            <details>
-                <summary>AI-Powered Communication Intelligence</summary>
-                <div class="details-content">
-                     <ul>
-                        <li><b>Tone Analysis:</b> AI analyzes imported conversations to understand patterns.</li>
-                        <li><b>Smart Message Suggestions:</b> Context-aware recommendations for birthdays and follow-ups.</li>
-                        <li><b>Communication Style Learning:</b> Adapts to formal vs. casual preferences.</li>
-                        <li><b>Relationship Strength Assessment:</b> Tracks communication frequency and engagement.</li>
-                    </ul>
-                </div>
-            </details>
-            
-            <details>
-                <summary>Automated Relationship Maintenance</summary>
-                <div class="details-content">
-                    <ul>
-                        <li><b>Birthday Dashboard:</b> Daily overview with AI-suggested personalized messages.</li>
-                        <li><b>Follow-up Reminders:</b> Configurable reminders for relationship maintenance.</li>
-                        <li><b>Smart Prioritization:</b> AI identifies important contacts who haven't been contacted recently.</li>
-                        <li><b>Notification System:</b> Proactive alerts for relationship touchpoints.</li>
-                    </ul>
-                </div>
-            </details>
-
-            <details>
-                <summary>Multi-Platform Integration</summary>
-                <div class="details-content">
-                    <ul>
-                        <li><b>Social Media:</b> LinkedIn, Instagram, Twitter/X integration.</li>
-                        <li><b>Messaging Platforms:</b> WhatsApp, Signal support.</li>
-                        <li><b>Email Integration:</b> Gmail, Outlook connection.</li>
-                        <li><b>Contact Import:</b> Phone contacts, email contacts, manual entry.</li>
-                    </ul>
-                </div>
-            </details>
-        </section>
+<body class="bg-gray-100 font-sans">
+    <div class="max-w-6xl mx-auto py-10 px-4">
+        <h1 class="text-4xl font-bold text-center mb-8 text-indigo-700">Aivra - Master Plan</h1>
         
-        <section id="tech-stack">
-            <h2>💻 High-Level Technical Stack</h2>
-            <div class="grid-container">
-                <div class="card">
-                    <h3>Frontend</h3>
-                    <ul>
-                        <li><strong>Web App:</strong> React.js or Vue.js</li>
-                        <li><strong>Mobile Apps:</strong> React Native or Flutter</li>
-                        <li><strong>UI Framework:</strong> Material-UI or Tailwind CSS</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>Backend</h3>
-                    <ul>
-                        <li><strong>API Framework:</strong> Node.js (Express) or Python (FastAPI)</li>
-                        <li><strong>Database:</strong> PostgreSQL with Redis for caching</li>
-                        <li><strong>AI/NLP:</strong> OpenAI API or similar</li>
-                        <li><strong>Authentication:</strong> JWT with OAuth</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>Integrations & Infrastructure</h3>
-                    <ul>
-                        <li><strong>APIs:</strong> LinkedIn, Instagram, Gmail, Microsoft Graph</li>
-                        <li><strong>Communication:</strong> WhatsApp Business API, Twilio</li>
-                        <li><strong>Infrastructure:</strong> AWS or Google Cloud</li>
-                    </ul>
-                </div>
+        <!-- SECTION TEMPLATE -->
+        <div class="bg-white rounded-lg shadow-md mb-6">
+            <div onclick="toggle('overview')" class="cursor-pointer px-6 py-4 border-b hover:bg-gray-50">
+                <h2 class="text-2xl font-semibold text-indigo-600">App Overview and Objectives</h2>
             </div>
-        </section>
+            <div id="overview" class="px-6 py-4 hidden">
+                <p>Aivra is a SaaS platform designed to help solopreneurs, freelancers, and networking professionals maintain meaningful relationships with their extensive network of contacts.</p>
+                <p class="mt-2"><strong>Core Value Proposition:</strong> AI-powered personalized communication and follow-up suggestions to maintain authentic relationships.</p>
+            </div>
+        </div>
 
-        <section id="data-model">
-            <h2>🗳️ Conceptual Data Model</h2>
-            <div class="grid-container">
-                <div class="card">
-                    <h3>Contact</h3>
-                    <p>Basic info, relationship metadata, communication preferences, and personal details.</p>
-                </div>
-                <div class="card">
-                    <h3>Interaction</h3>
-                    <p>Communication records, tone analysis, relationship strength indicators, and follow-up actions.</p>
-                </div>
-                <div class="card">
-                    <h3>AI Analysis</h3>
-                    <p>Communication patterns, message templates, user feedback, and model improvements.</p>
-                </div>
+        <div class="bg-white rounded-lg shadow-md mb-6">
+            <div onclick="toggle('audience')" class="cursor-pointer px-6 py-4 border-b hover:bg-gray-50">
+                <h2 class="text-2xl font-semibold text-indigo-600">Target Audience</h2>
             </div>
-        </section>
-        
-        <section id="ui-design">
-            <h2>🎨 User Interface Design Principles</h2>
-             <div class="grid-container">
-                <div class="card">
-                    <h3>Dashboard-First Approach</h3>
-                    <p>Immediate visibility of today's actions, quick access to key features, and a clean, uncluttered interface.</p>
-                </div>
-                <div class="card">
-                    <h3>Progressive Disclosure</h3>
-                    <p>Show essential information first, with detailed views available on demand. Allow for customizable layouts.</p>
-                </div>
-                <div class="card">
-                    <h3>Mobile-First Considerations</h3>
-                    <p>Easy contact capture, offline capabilities for core features, and touch-optimized gestures for management.</p>
-                </div>
+            <div id="audience" class="px-6 py-4 hidden">
+                <ul class="list-disc ml-6">
+                    <li>Freelancers, consultants, sales professionals, real estate agents, influencers, and entrepreneurs</li>
+                    <li>Managing 100+ contacts, multi-platform active, value authentic relationships</li>
+                </ul>
             </div>
-        </section>
-        
-        <section id="security">
-            <h2>🛡️ Security & AI Ethics</h2>
-             <div class="grid-container">
-                <div class="card">
-                    <h3>Data Privacy & Protection</h3>
-                    <p>End-to-end encryption, data minimization, granular user control, and GDPR compliance.</p>
-                </div>
-                <div class="card">
-                    <h3>AI Ethics & Transparency</h3>
-                    <p>Clear communication on AI usage, explicit user consent, bias prevention audits, and human override capabilities.</p>
-                </div>
-                <div class="card">
-                    <h3>Platform Security</h3>
-                    <p>Multi-factor authentication, secure APIs with rate limiting, and regular security assessments.</p>
-                </div>
-            </div>
-        </section>
-        
-        <section id="development-phases">
-            <h2>🗺️ Development Phases and Milestones</h2>
-            <div class="phase">
-                <div class="phase-dot"></div>
-                <h3>Phase 1: Core MVP (3-6 months)</h3>
-                <p><strong>Objectives:</strong> Basic relationship management with manual entry, simple email integration, basic birthday reminders, and a responsive web app.</p>
-            </div>
-            <div class="phase">
-                <div class="phase-dot"></div>
-                <h3>Phase 2: AI Enhancement (3-4 months)</h3>
-                <p><strong>Objectives:</strong> LinkedIn integration, advanced tone analysis, smart follow-up reminders, enhanced message suggestions, and user feedback loops.</p>
-            </div>
-            <div class="phase">
-                <div class="phase-dot"></div>
-                <h3>Phase 3: Platform Expansion (4-6 months)</h3>
-                <p><strong>Objectives:</strong> Native mobile apps (iOS/Android), WhatsApp integration, advanced analytics, and potential team collaboration features.</p>
-            </div>
-            <div class="phase">
-                <div class="phase-dot"></div>
-                <h3>Phase 4: Scale & Optimize (Ongoing)</h3>
-                <p><strong>Objectives:</strong> Advanced AI models, more third-party integrations, performance optimization, and continuous UX improvements.</p>
-            </div>
-        </section>
-        
-        <section id="monetization">
-            <h2>💰 Monetization Strategy</h2>
-             <div class="monetization-grid">
-                <div class="tier">
-                    <h3>Free Tier</h3>
-                    <p class="price">₹0</p>
-                    <ul>
-                        <li>✓ Up to 100 contacts</li>
-                        <li>✓ Basic birthday reminders</li>
-                        <li>✓ 5 AI suggestions/month</li>
-                        <li>✓ Basic email integration</li>
-                    </ul>
-                </div>
-                <div class="tier pro-tier">
-                    <h3>Pro Tier</h3>
-                    <p class="price">₹999-₹1250/mo</p>
-                    <ul>
-                        <li>✓ Unlimited contacts</li>
-                        <li>✓ Full AI analysis & suggestions</li>
-                        <li>✓ All social media integrations</li>
-                        <li>✓ Advanced follow-up automation</li>
-                        <li>✓ Priority support</li>
-                    </ul>
-                </div>
-                <div class="tier">
-                    <h3>Team Tier</h3>
-                    <p class="price">₹2000-₹2500/mo</p>
-                     <ul>
-                        <li>✓ Multiple user accounts</li>
-                        <li>✓ Shared contact databases</li>
-                        <li>✓ Team collaboration features</li>
-                        <li>✓ Advanced analytics & reporting</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-        
-        <section id="challenges">
-            <h2>🤔 Potential Challenges and Solutions</h2>
-            <div class="grid-container">
-                <div class="card">
-                    <h3>Technical Challenges</h3>
-                    <p><strong>Challenge:</strong> AI accuracy and context understanding.<br><strong>Solution:</strong> Start simple, use feedback loops, and allow user editing.</p>
-                    <p><strong>Challenge:</strong> Social media API limitations.<br><strong>Solution:</strong> Focus on robust APIs (LinkedIn) and provide manual import alternatives.</p>
-                </div>
-                <div class="card">
-                    <h3>Business Challenges</h3>
-                    <p><strong>Challenge:</strong> User adoption and habit formation.<br><strong>Solution:</strong> Focus on immediate value (birthdays), simple onboarding.</p>
-                    <p><strong>Challenge:</strong> Competition from established CRMs.<br><strong>Solution:</strong> Differentiate with a focus on personal relationships and AI.</p>
-                </div>
-                 <div class="card">
-                    <h3>Operational Challenges</h3>
-                    <p><strong>Challenge:</strong> Data privacy and compliance.<br><strong>Solution:</strong> Privacy-by-design architecture and regular compliance audits.</p>
-                </div>
-            </div>
-        </section>
-        
-        <section id="future-expansion">
-            <h2>🌟 Future Expansion Possibilities</h2>
-            <div class="grid-container">
-                <div class="card">
-                    <h3>Advanced AI Features</h3>
-                    <p>Predictive relationship health scoring, automated opportunity identification, and advanced sentiment analysis.</p>
-                </div>
-                <div class="card">
-                    <h3>Platform Extensions</h3>
-                    <p>Browser extensions for quick capture, integration with virtual event platforms, and relationship ROI tracking.</p>
-                </div>
-                <div class="card">
-                    <h3>Market Expansions</h3>
-                    <p>Enterprise versions, industry-specific modules (real estate, insurance), and integration with professional development platforms.</p>
-                </div>
-            </div>
-        </section>
-        
-         <section id="kpis">
-            <h2>📊 Success Metrics and KPIs</h2>
-            <div class="grid-container">
-                <div class="card">
-                    <h3>User Engagement</h3>
-                    <p>Daily/Monthly Active Users (DAU/MAU), contacts added, AI suggestions accepted, feature adoption rates.</p>
-                </div>
-                <div class="card">
-                    <h3>Business Metrics</h3>
-                    <p>Customer Acquisition Cost (CAC), Monthly Recurring Revenue (MRR), Customer Lifetime Value (CLV), Churn Rate.</p>
-                </div>
-                <div class="card">
-                    <h3>Product Performance</h3>
-                    <p>AI suggestion accuracy, user satisfaction scores (CSAT), platform performance and uptime.</p>
-                </div>
-            </div>
-        </section>
-        
-        <section id="conclusion">
-            <h2>🏁 Conclusion</h2>
-            <p>Aivra represents a significant opportunity to revolutionize personal relationship management for the growing solopreneur and networking professional market. By combining intelligent contact management with AI-powered communication assistance, Aivra addresses a real pain point while providing scalable, authentic relationship maintenance.</p>
-            <div class="card" style="border-left: 5px solid var(--primary-color);">
-                <p>The key to Aivra's success lies in maintaining the balance between <strong>automation and authenticity</strong>—helping users remember and connect without losing the personal touch that makes relationships meaningful.</p>
-            </div>
-        </section>
+        </div>
 
-    </main>
-</div>
+        <div class="bg-white rounded-lg shadow-md mb-6">
+            <div onclick="toggle('features')" class="cursor-pointer px-6 py-4 border-b hover:bg-gray-50">
+                <h2 class="text-2xl font-semibold text-indigo-600">Core Features and Functionality</h2>
+            </div>
+            <div id="features" class="px-6 py-4 hidden">
+                <ul class="list-disc ml-6">
+                    <li>Contact Management with advanced search & tagging</li>
+                    <li>AI-Powered Communication Intelligence (tone analysis, smart suggestions)</li>
+                    <li>Automated Relationship Maintenance (birthdays, follow-ups)</li>
+                    <li>Multi-Platform Integration (LinkedIn, Gmail, WhatsApp, etc)</li>
+                </ul>
+            </div>
+        </div>
 
+        <div class="bg-white rounded-lg shadow-md mb-6">
+            <div onclick="toggle('techstack')" class="cursor-pointer px-6 py-4 border-b hover:bg-gray-50">
+                <h2 class="text-2xl font-semibold text-indigo-600">High-Level Technical Stack</h2>
+            </div>
+            <div id="techstack" class="px-6 py-4 hidden">
+                <ul class="list-disc ml-6">
+                    <li>Frontend: React.js / Vue.js, Tailwind CSS</li>
+                    <li>Backend: Node.js/Express or Python/FastAPI, PostgreSQL, Redis</li>
+                    <li>AI: OpenAI API / NLP integration</li>
+                    <li>Hosting: AWS / Google Cloud</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md mb-6">
+            <div onclick="toggle('datamodel')" class="cursor-pointer px-6 py-4 border-b hover:bg-gray-50">
+                <h2 class="text-2xl font-semibold text-indigo-600">Conceptual Data Model</h2>
+            </div>
+            <div id="datamodel" class="px-6 py-4 hidden">
+                <p>Core entities: Contact, Interaction, AI Analysis</p>
+                <ul class="list-disc ml-6 mt-2">
+                    <li>Contact: Personal, professional, and relationship data</li>
+                    <li>Interaction: Communication records, tone, follow-ups</li>
+                    <li>AI Analysis: Patterns, suggestions, feedback loops</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md mb-6">
+            <div onclick="toggle('ui')" class="cursor-pointer px-6 py-4 border-b hover:bg-gray-50">
+                <h2 class="text-2xl font-semibold text-indigo-600">UI Design Principles</h2>
+            </div>
+            <div id="ui" class="px-6 py-4 hidden">
+                <ul class="list-disc ml-6">
+                    <li>Dashboard-first approach</li>
+                    <li>Progressive disclosure for detail views</li>
+                    <li>Mobile-first design with offline capability</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md mb-6">
+            <div onclick="toggle('security')" class="cursor-pointer px-6 py-4 border-b hover:bg-gray-50">
+                <h2 class="text-2xl font-semibold text-indigo-600">Security Considerations</h2>
+            </div>
+            <div id="security" class="px-6 py-4 hidden">
+                <ul class="list-disc ml-6">
+                    <li>Encryption & data minimization</li>
+                    <li>Granular user controls & GDPR compliance</li>
+                    <li>AI transparency & ethical usage</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md mb-6">
+            <div onclick="toggle('phases')" class="cursor-pointer px-6 py-4 border-b hover:bg-gray-50">
+                <h2 class="text-2xl font-semibold text-indigo-600">Development Phases</h2>
+            </div>
+            <div id="phases" class="px-6 py-4 hidden">
+                <ol class="list-decimal ml-6">
+                    <li>Phase 1: Core MVP</li>
+                    <li>Phase 2: AI Enhancement</li>
+                    <li>Phase 3: Platform Expansion</li>
+                    <li>Phase 4: Scale & Optimize</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md mb-6">
+            <div onclick="toggle('monetization')" class="cursor-pointer px-6 py-4 border-b hover:bg-gray-50">
+                <h2 class="text-2xl font-semibold text-indigo-600">Monetization Strategy</h2>
+            </div>
+            <div id="monetization" class="px-6 py-4 hidden">
+                <ul class="list-disc ml-6">
+                    <li>Freemium Model: Free, Pro, and Team tiers</li>
+                    <li>Pro Tier: $12-15/mo, Team Tier: $25-30/mo</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md mb-6">
+            <div onclick="toggle('challenges')" class="cursor-pointer px-6 py-4 border-b hover:bg-gray-50">
+                <h2 class="text-2xl font-semibold text-indigo-600">Challenges and Solutions</h2>
+            </div>
+            <div id="challenges" class="px-6 py-4 hidden">
+                <ul class="list-disc ml-6">
+                    <li>AI accuracy: gradual rollout, user feedback loops</li>
+                    <li>API limitations: flexible architecture</li>
+                    <li>User adoption: instant value, easy onboarding</li>
+                    <li>Data privacy: privacy-by-design & regular audits</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md mb-6">
+            <div onclick="toggle('future')" class="cursor-pointer px-6 py-4 border-b hover:bg-gray-50">
+                <h2 class="text-2xl font-semibold text-indigo-600">Future Expansion</h2>
+            </div>
+            <div id="future" class="px-6 py-4 hidden">
+                <ul class="list-disc ml-6">
+                    <li>Advanced AI (sentiment, predictive scoring)</li>
+                    <li>Browser extensions, event integrations</li>
+                    <li>Enterprise & industry-specific versions</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md mb-6">
+            <div onclick="toggle('metrics')" class="cursor-pointer px-6 py-4 border-b hover:bg-gray-50">
+                <h2 class="text-2xl font-semibold text-indigo-600">Success Metrics</h2>
+            </div>
+            <div id="metrics" class="px-6 py-4 hidden">
+                <ul class="list-disc ml-6">
+                    <li>User Engagement (DAU, AI usage)</li>
+                    <li>Business Metrics (MRR, CAC, LTV)</li>
+                    <li>Product Performance (AI accuracy, feature usage)</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
 </body>
 </html>
